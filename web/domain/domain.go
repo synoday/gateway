@@ -11,5 +11,5 @@ type Domain interface {
 	PlugRoute(r *router.Router)
 
 	// PlugClient attach gRPC client service to each domain.
-	PlugClient(k client.ServiceClient)
+	PlugClient(k *client.ServiceClient)
 }

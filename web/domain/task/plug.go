@@ -5,7 +5,7 @@ import (
 	"github.com/synoday/gateway/web/router"
 )
 
-var synodayClient client.ServiceClient
+var synodayClient *client.ServiceClient
 
 // Domain expose task domain implementation.
 var Domain domain
@@ -24,6 +24,6 @@ func (d domain) PlugRoute(route *router.Router) {
 }
 
 // PlugClient attach gRPC client service to user domain.
-func (d domain) PlugClient(k client.ServiceClient) {
+func (d domain) PlugClient(k *client.ServiceClient) {
 	synodayClient = k
 }

@@ -2,3 +2,11 @@
 
 [app]
 port="$PORT||5151"
+
+[usersvc]
+host="$USER_SVC_SERVICE_HOST||localhost"
+port="$USER_SVC_SERVICE_PORT||9111"
+
+[tasksvc]
+host="$TASK_SVC_SERVICE_HOST||localhost"
+port="$TASK_SVC_SERVICE_PORT||9112"

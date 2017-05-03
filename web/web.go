@@ -17,7 +17,7 @@ import (
 type Gateway struct {
 	config *envcfg.Envcfg
 	router *router.Router
-	client client.ServiceClient
+	client *client.ServiceClient
 }
 
 // Run starts synoday gateway web api gateway server.
@@ -42,11 +42,11 @@ func (g *Gateway) bootstrap() {
 	// setup app routes.
 	g.router = router.New()
 
-	// grpc client connections.
-	g.client, err = client.New()
-	if err != nil {
-		log.Fatal(err)
-	}
+	// setup grpc client connections.
+	g.client = client.New(
+		client.UserService(g.config.GetString("usersvc.host"), g.config.GetString("usersvc.port")),
+		client.TaskService(g.config.GetString("tasksvc.host"), g.config.GetString("tasksvc.port")),
+	)
 
 	// register domain services.
 	g.plug(
