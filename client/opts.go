@@ -16,7 +16,6 @@ type Option func(*ServiceClient)
 // UserService is an option that creates new user service client connection.
 func UserService(host, port string) Option {
 	return func(s *ServiceClient) {
-		log.Println(fmt.Sprintf("%s:%s", host, port))
 		s.UserServiceClient = userpb.NewUserServiceClient(mustDial(fmt.Sprintf("%s:%s", host, port)))
 	}
 }
@@ -24,7 +23,6 @@ func UserService(host, port string) Option {
 // TaskService is an option that creates new task service client connection.
 func TaskService(host, port string) Option {
 	return func(s *ServiceClient) {
-		log.Println(fmt.Sprintf("%s:%s", host, port))
 		s.TaskServiceClient = taskpb.NewTaskServiceClient(mustDial(fmt.Sprintf("%s:%s", host, port)))
 	}
 }
