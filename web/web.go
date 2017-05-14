@@ -25,7 +25,7 @@ func (g *Gateway) Run() {
 	g.bootstrap()
 
 	addr := fmt.Sprintf(":%s", g.config.GetString("app.port"))
-	log.Printf("Application start on: %s \n", addr)
+	log.Printf("Synoday API Gateways started on: %s \n", addr)
 	g.router.Run(addr)
 }
 

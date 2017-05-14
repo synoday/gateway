@@ -8,13 +8,13 @@ import (
 var synodayClient *client.ServiceClient
 
 // Domain expose user domain implementation.
-var Domain domain
+var Domain *domain
 
 // domain is user domain implementation.
 type domain struct{}
 
 // PlugRoute registers user domain routes.
-func (d domain) PlugRoute(route *router.Router) {
+func (d *domain) PlugRoute(route *router.Router) {
 	for _, r := range routes {
 		route.R.
 			Methods(r.Method).
@@ -24,6 +24,6 @@ func (d domain) PlugRoute(route *router.Router) {
 }
 
 // PlugClient attach gRPC client service to user domain.
-func (d domain) PlugClient(k *client.ServiceClient) {
+func (d *domain) PlugClient(k *client.ServiceClient) {
 	synodayClient = k
 }
